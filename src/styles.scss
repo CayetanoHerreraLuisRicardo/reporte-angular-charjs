@@ -1,0 +1,30 @@
+body {
+    font-family: Nunito;
+    color: #25396f;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #25396f;
+    font-family: Nunito;
+}
+
+p {
+    color: #7c8db5 !important;
+}
+
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/bootstrap.min.css';
+
+/* Animaciones */
+@import 'assets/css/animate.min.css';
