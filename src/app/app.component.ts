@@ -93,8 +93,9 @@ export class AppComponent implements OnInit, AfterViewInit {
             display: true,
             ticks: {
               fontSize,
-              fontColor: '#7c8db5'
-            }
+              fontColor: '#7c8db5',
+              beginAtZero: fontSize <= 10,
+            },
           }
         ],
         xAxes: [
@@ -124,5 +125,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
   @HostListener('window:scroll', ['$event']) onScrollEvent($event: any) {
+  }
+  getHeight(px: boolean = true) {
+    return this.getFontSize() <= 12 ? (px ? '250px !important' : '250') : '';
   }
 }
