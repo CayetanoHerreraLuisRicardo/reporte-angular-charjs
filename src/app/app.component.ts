@@ -5,6 +5,8 @@ import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { HostListener } from "@angular/core";
+import { ApiService } from './services/api.service';
+import { Comment } from './models/comment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -44,7 +46,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   scrHeight: any;
   scrWidth: any;
   showGraphs = false;
-  constructor(private authService: SocialAuthService) { }
+  lstCommentsT1: Comment[] = []
+  lstCommentsT2: Comment[] = []
+  lstCommentsT3: Comment[] = []
+  lstCommentsT4: Comment[] = []
+  constructor(private authService: SocialAuthService, private api: ApiService) { }
   @HostListener('window:resize', ['$event'])
   getScreenSize(event: any) {
     this.scrHeight = window.innerHeight;
@@ -70,6 +76,22 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
+
+    this.api.getCommentsByCompanyId('6256385fd6faab4c4fc541c4').subscribe(
+      (response: Comment[]) => {
+        console.log(response)
+        this.lstCommentsT1 = response.filter(x => x.tipo === 1);
+        this.lstCommentsT2 = response.filter(x => x.tipo === 2);
+        this.lstCommentsT3 = response.filter(x => x.tipo === 3);
+        this.lstCommentsT4 = response.filter(x => x.tipo === 4);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+
+      }
+    );
   }
   ngAfterViewInit(): void {
     this.barChartOptions = this.getConfig();

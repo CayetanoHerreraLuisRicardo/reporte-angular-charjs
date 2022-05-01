@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'http://localhost:3002/api/',
+  /**
+  * Constantes de ContentTypes a utilizar en las peticiones a los servicios res
+  */
+  CONTENT_TYPE_URL_ENCODED: 'application/x-www-form-urlencoded',
+  CONTENT_TYPE_JSON: 'application/json',
 };
 
 /*

@@ -10,9 +10,10 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule],
   declarations: [AppComponent, HelloComponent],
   providers: [
     {
