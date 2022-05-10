@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:3002/api/',
+  API_URL: 'https://app-demo-frontend.herokuapp.com/api/',
   /**
   * Constantes de ContentTypes a utilizar en las peticiones a los servicios res
   */

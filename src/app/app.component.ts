@@ -5,6 +5,7 @@ import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { HostListener } from "@angular/core";
+import { NgxSpinnerService } from "ngx-spinner";
 import { ApiService } from './services/api.service';
 import { Comment } from './models/comment';
 @Component({
@@ -46,11 +47,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   scrHeight: any;
   scrWidth: any;
   showGraphs = false;
-  lstCommentsT1: Comment[] = []
-  lstCommentsT2: Comment[] = []
-  lstCommentsT3: Comment[] = []
-  lstCommentsT4: Comment[] = []
-  constructor(private authService: SocialAuthService, private api: ApiService) { }
+  lstCommentsT1: Comment[] = [];
+  lstCommentsT2: Comment[] = [];
+  lstCommentsT3: Comment[] = [];
+  lstCommentsT4: Comment[] = [];
+  comment1: string = '';
+  comment2: string = '';
+  comment3: string = '';
+  comment4: string = '';
+  constructor(private authService: SocialAuthService, private api: ApiService, private spinner: NgxSpinnerService) { }
   @HostListener('window:resize', ['$event'])
   getScreenSize(event: any) {
     this.scrHeight = window.innerHeight;
@@ -63,27 +68,21 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log(succes);
       },
       (error) => {
-
+        console.log(error);
       }
     )
   }
   signOut(): void {
     this.authService.signOut();
   }
-
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
-
+  getComments() {
     this.api.getCommentsByCompanyId('6256385fd6faab4c4fc541c4').subscribe(
       (response: Comment[]) => {
         console.log(response)
-        this.lstCommentsT1 = response.filter(x => x.tipo === 1);
-        this.lstCommentsT2 = response.filter(x => x.tipo === 2);
-        this.lstCommentsT3 = response.filter(x => x.tipo === 3);
-        this.lstCommentsT4 = response.filter(x => x.tipo === 4);
+        this.lstCommentsT1 = response.filter(x => x.type === 1);
+        this.lstCommentsT2 = response.filter(x => x.type === 2);
+        this.lstCommentsT3 = response.filter(x => x.type === 3);
+        this.lstCommentsT4 = response.filter(x => x.type === 4);
       },
       (error) => {
         console.log(error);
@@ -92,6 +91,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       }
     );
+  }
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+    this.getComments();
   }
   ngAfterViewInit(): void {
     this.barChartOptions = this.getConfig();
@@ -150,5 +156,36 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   getHeight(px: boolean = true) {
     return this.getFontSize() <= 12 ? (px ? '250px !important' : '250') : '';
+  }
+  btnCreateComment(type: number, comment: string) {
+    console.log(comment);
+    if (this.loggedIn) {
+      this.spinner.show();
+      let body = new Comment();
+      body.comment = comment;
+      body.email_account = this.user.email;
+      body.id_empresa = '6256385fd6faab4c4fc541c4';
+      body.image_profile = this.user.photoUrl;
+      body.type = type;
+      body.user_name = this.user.name;
+      this.api.createComment(body).subscribe(
+        (response: Comment) => {
+          console.log(response);
+          this.getComments();
+          this.comment1 = '';
+          this.comment2 = '';
+          this.comment3 = '';
+          this.comment4 = '';
+          this.spinner.hide();
+        },
+        (error: any) => {
+          this.spinner.hide();
+        },
+        () => {
+
+          this.spinner.hide();
+        }
+      );
+    }
   }
 }

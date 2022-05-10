@@ -19,4 +19,9 @@ export class ApiService {
     const url = `${environment.API_URL}${urlApi}/${idEmpresa}/comments`;
     return this.http.get<Comment[]>(url, { headers: this.headers });
   }
+  createComment(body: Comment) {
+    const urlApi = 'comments';
+    const url = `${environment.API_URL}${urlApi}`;
+    return this.http.post<Comment>(url, body, { headers: this.headers });
+  }
 }

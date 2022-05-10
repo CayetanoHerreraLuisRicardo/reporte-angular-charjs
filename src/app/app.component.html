@@ -270,23 +270,24 @@
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <form>
                                 <div class="form-group">
-                                  <textarea class="form-control" rows="4"></textarea>
+                                  <textarea class="form-control" rows="4" [(ngModel)]="comment1"
+                                    [ngModelOptions]="{standalone: true}"></textarea>
                                 </div>
                                 <div class="form-group">
-                                  <button type="button" class="btn btn-success btn-block">Comentar</button>
+                                  <button type="button" class="btn btn-success btn-block"
+                                    (click)="btnCreateComment(1, comment1)">Comentar</button>
                                 </div>
                               </form>
                             </div>
                           </div>
                           <div class="row" *ngFor="let x of lstCommentsT1">
                             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 col-3">
-                              <img src="assets/images/def_face.jpg" class="img rounded-circle img-fluid" /><br>
-                              <p class="text-secondary text-center">{{x.creation_date}}</p>
+                              <img [src]="x.image_profile" class="img rounded-circle img-fluid" /><br>
+                              <p class="text-secondary text-center">{{x.creation_date | date}}</p>
                             </div>
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <p>
-                                <a class="float-left"
-                                  href="https://github.com/CayetanoHerreraLuisRicardo?tab=repositories"><strong>{{x.user_name}}</strong></a>
+                                <a class="float-left" href="javascript: void(0)"><strong>{{x.user_name}}</strong></a>
 
                               </p>
                               <div class="clearfix"></div>
@@ -546,23 +547,24 @@
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <form>
                                 <div class="form-group">
-                                  <textarea class="form-control" rows="4"></textarea>
+                                  <textarea class="form-control" rows="4" [(ngModel)]="comment2"
+                                    [ngModelOptions]="{standalone: true}"></textarea>
                                 </div>
                                 <div class="form-group">
-                                  <button type="button" class="btn btn-success btn-block">Comentar</button>
+                                  <button type="button" class="btn btn-success btn-block"
+                                    (click)="btnCreateComment(2, comment2)">Comentar</button>
                                 </div>
                               </form>
                             </div>
                           </div>
                           <div class="row" *ngFor="let x of lstCommentsT2">
                             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 col-3">
-                              <img src="assets/images/def_face.jpg" class="img rounded-circle img-fluid" /><br>
-                              <p class="text-secondary text-center">{{x.creation_date}}</p>
+                              <img [src]="x.image_profile" class="img rounded-circle img-fluid" /><br>
+                              <p class="text-secondary text-center">{{x.creation_date | date}}</p>
                             </div>
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <p>
-                                <a class="float-left"
-                                  href="https://github.com/CayetanoHerreraLuisRicardo?tab=repositories"><strong>{{x.user_name}}</strong></a>
+                                <a class="float-left" href="javascript: void(0)"><strong>{{x.user_name}}</strong></a>
 
                               </p>
                               <div class="clearfix"></div>
@@ -624,23 +626,24 @@
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <form>
                                 <div class="form-group">
-                                  <textarea class="form-control" rows="4"></textarea>
+                                  <textarea class="form-control" rows="4" [(ngModel)]="comment3"
+                                    [ngModelOptions]="{standalone: true}"></textarea>
                                 </div>
                                 <div class="form-group">
-                                  <button type="button" class="btn btn-success btn-block">Comentar</button>
+                                  <button type="button" class="btn btn-success btn-block"
+                                    (click)="btnCreateComment(3, comment3)">Comentar</button>
                                 </div>
                               </form>
                             </div>
                           </div>
                           <div class="row" *ngFor="let x of lstCommentsT3">
                             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 col-3">
-                              <img src="assets/images/def_face.jpg" class="img rounded-circle img-fluid" /><br>
-                              <p class="text-secondary text-center">{{x.creation_date}}</p>
+                              <img [src]="x.image_profile" class="img rounded-circle img-fluid" /><br>
+                              <p class="text-secondary text-center">{{x.creation_date | date}}</p>
                             </div>
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <p>
-                                <a class="float-left"
-                                  href="https://github.com/CayetanoHerreraLuisRicardo?tab=repositories"><strong>{{x.user_name}}</strong></a>
+                                <a class="float-left" href="javascript: void(0)"><strong>{{x.user_name}}</strong></a>
 
                               </p>
                               <div class="clearfix"></div>
@@ -689,23 +692,24 @@
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10">
                               <form>
                                 <div class="form-group">
-                                  <textarea class="form-control" rows="4"></textarea>
+                                  <textarea class="form-control" rows="4" [(ngModel)]="comment4"
+                                    [ngModelOptions]="{standalone: true}"></textarea>
                                 </div>
                                 <div class="form-group">
-                                  <button type="button" class="btn btn-success btn-block">Comentar</button>
+                                  <button type="button" class="btn btn-success btn-block"
+                                    (click)="btnCreateComment(4, comment4)">Comentar</button>
                                 </div>
                               </form>
                             </div>
                           </div>
                           <div class="row" *ngFor="let x of lstCommentsT4">
                             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 col-3">
-                              <img src="assets/images/def_face.jpg" class="img rounded-circle img-fluid" /><br>
-                              <p class="text-secondary text-center">{{x.creation_date}}</p>
+                              <img [src]="x.image_profile" class="img rounded-circle img-fluid" /><br>
+                              <p class="text-secondary text-center">{{x.creation_date | date}}</p>
                             </div>
                             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-9">
                               <p>
-                                <a class="float-left"
-                                  href="https://github.com/CayetanoHerreraLuisRicardo?tab=repositories"><strong>{{x.user_name}}</strong></a>
+                                <a class="float-left" href="javascript: void(0)"><strong>{{x.user_name}}</strong></a>
 
                               </p>
                               <div class="clearfix"></div>
@@ -725,3 +729,6 @@
     </div>
   </main>
 </div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true">
+  <p style="color: white"> Cargando... </p>
+</ngx-spinner>

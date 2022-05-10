@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";
 import { ChartsModule } from 'ng2-charts';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
+  GoogleLoginProvider
 } from 'angularx-social-login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -13,7 +14,7 @@ import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule, BrowserAnimationsModule, NgxSpinnerModule],
   declarations: [AppComponent, HelloComponent],
   providers: [
     {
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
       } as SocialAuthServiceConfig,
     }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
