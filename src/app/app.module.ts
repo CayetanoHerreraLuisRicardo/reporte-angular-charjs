@@ -10,12 +10,17 @@ import {
 } from 'angularx-social-login';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule, BrowserAnimationsModule, NgxSpinnerModule],
-  declarations: [AppComponent, HelloComponent],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ChartsModule, SocialLoginModule, NgbModule, BrowserAnimationsModule, NgxSpinnerModule, AppRoutingModule],
+  declarations: [AppComponent,
+    HomeComponent,
+    NotfoundComponent
+  ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
@@ -33,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
